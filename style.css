@@ -83,3 +83,43 @@ section{
     border-radius:10px;
     text-align:center;
 }
+#projects h2{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+.project-card{
+    background:#1e293b;
+    padding:25px;
+    border-radius:12px;
+    transition:0.3s;
+}
+
+.project-card:hover{
+    transform:translateY(-8px);
+}
+
+.project-card h3{
+    color:#38bdf8;
+    margin-bottom:15px;
+}
+
+.project-card p{
+    margin-bottom:15px;
+    line-height:1.6;
+}
+
+.project-card a{
+    display:inline-block;
+    padding:10px 18px;
+    background:#38bdf8;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+}
