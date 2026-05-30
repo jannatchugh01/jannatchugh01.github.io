@@ -45,6 +45,11 @@ nav a{
     color:white;
     text-decoration:none;
 }
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
 
 .hero{
     min-height:80vh;
