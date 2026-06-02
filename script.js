@@ -6,6 +6,9 @@ buttons.forEach(button => {
 ```
 button.addEventListener("click", () => {
 
+    buttons.forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+
     const filter = button.textContent.toLowerCase();
 
     projects.forEach(project => {
@@ -26,4 +29,3 @@ button.addEventListener("click", () => {
 ```
 
 });
-
