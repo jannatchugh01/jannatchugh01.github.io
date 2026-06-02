@@ -162,14 +162,23 @@ section h2{
     color:white;
     text-decoration:none;
     border-radius:8px;
-}
+} 
 .cert-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:20px;
     margin-top:30px;
 }
+.cert-card{
+    background:#1e293b;
+    padding:20px;
+    border-radius:10px;
+    transition:0.3s;
+}
 
+.cert-card:hover{
+    transform:translateY(-5px);
+}
 .cert-card a{
     display:inline-block;
     margin-top:10px;
