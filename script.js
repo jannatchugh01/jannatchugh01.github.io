@@ -36,4 +36,3 @@ buttons.forEach(function(button){
 ```
 
 });
-
