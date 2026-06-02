@@ -111,7 +111,9 @@ section h2{
     margin-top:15px;
     color:#94a3b8;
 }
-
+#skills{
+    text-align:center;
+}
 .skills-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
