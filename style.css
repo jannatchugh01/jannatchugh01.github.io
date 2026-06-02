@@ -65,7 +65,9 @@ nav a{
 }
 .hero h3{
     color:#38bdf8;
-    margin:7px;
+    margin:15px 0;
+    font-size:24px;
+    font-weight:600;
 }
 
 .hero h2{
@@ -316,4 +318,7 @@ footer{
     line-height: 1.8;
     margin-bottom: 20px;
     color: #cbd5e1;
+}
+.filters button.active{
+    background:#38bdf8;
 }
