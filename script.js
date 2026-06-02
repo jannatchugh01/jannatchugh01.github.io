@@ -1,14 +1,14 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
 
 ```
 const buttons = document.querySelectorAll(".filters button");
 const projects = document.querySelectorAll(".project-card");
 
-buttons.forEach(function(button){
+buttons.forEach(function(button) {
 
-    button.addEventListener("click", function(){
+    button.addEventListener("click", function() {
 
-        buttons.forEach(function(btn){
+        buttons.forEach(function(btn) {
             btn.classList.remove("active");
         });
 
@@ -16,15 +16,15 @@ buttons.forEach(function(button){
 
         const filter = button.textContent.trim().toLowerCase();
 
-        projects.forEach(function(project){
+        projects.forEach(function(project) {
 
-            if(filter === "all"){
+            if (filter === "all") {
                 project.style.display = "flex";
-            }
-            else if(project.classList.contains(filter)){
+            } 
+            else if (project.classList.contains(filter)) {
                 project.style.display = "flex";
-            }
-            else{
+            } 
+            else {
                 project.style.display = "none";
             }
 
