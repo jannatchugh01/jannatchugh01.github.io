@@ -1,35 +1,89 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
 
-    const buttons = document.querySelectorAll(".filters button");
+    /* ================= PROJECT FILTER ================= */
+
+    const filterButtons = document.querySelectorAll(".filter-btn");
     const projects = document.querySelectorAll(".project-card");
 
-    buttons.forEach(function(button) {
+    filterButtons.forEach(button => {
 
-        button.addEventListener("click", function() {
+        button.addEventListener("click", () => {
 
-            buttons.forEach(function(btn) {
+            const filter = button.dataset.filter;
+
+            filterButtons.forEach(btn => {
                 btn.classList.remove("active");
             });
 
             button.classList.add("active");
 
-            const filter = button.textContent.trim().toLowerCase();
+            projects.forEach(project => {
 
-            projects.forEach(function(project) {
-
-                if (filter === "all") {
-                    project.style.display = "flex";
-                }
-                else if (project.classList.contains(filter)) {
-                    project.style.display = "flex";
-                }
-                else {
-                    project.style.display = "none";
+                if (filter === "all" || project.classList.contains(filter)) {
+                    project.classList.remove("hide");
+                } else {
+                    project.classList.add("hide");
                 }
 
             });
 
         });
+
+    });
+
+
+    /* ================= NAVBAR SCROLL ================= */
+
+    const navbar = document.querySelector(".navbar");
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 30) {
+
+            navbar.style.background = "rgba(8,11,18,0.96)";
+
+        } else {
+
+            navbar.style.background = "rgba(8,11,18,0.88)";
+
+        }
+
+    });
+
+
+    /* ================= SCROLL REVEAL ================= */
+
+    const revealElements = document.querySelectorAll(
+        ".section-heading, .project-card, .skill-category, .cert-card, .stat-card, .about-highlight"
+    );
+
+    const observer = new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("visible");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+    revealElements.forEach(element => {
+
+        element.classList.add("reveal");
+
+        observer.observe(element);
 
     });
 
