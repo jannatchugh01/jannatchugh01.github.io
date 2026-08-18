@@ -1,28 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* ================= PROJECT FILTER ================= */
+    /* ==========================================
+       PROJECT FILTER
+       ========================================== */
 
-    const filterButtons = document.querySelectorAll(".filter-btn");
-    const projects = document.querySelectorAll(".project-card");
+    const filters = document.querySelectorAll(".filter");
+    const projects = document.querySelectorAll(".project");
 
-    filterButtons.forEach(button => {
+    filters.forEach(filter => {
 
-        button.addEventListener("click", () => {
+        filter.addEventListener("click", () => {
 
-            const filter = button.dataset.filter;
+            const selected = filter.dataset.filter;
 
-            filterButtons.forEach(btn => {
-                btn.classList.remove("active");
+            filters.forEach(item => {
+                item.classList.remove("active");
             });
 
-            button.classList.add("active");
+            filter.classList.add("active");
 
             projects.forEach(project => {
 
-                if (filter === "all" || project.classList.contains(filter)) {
+                if (
+                    selected === "all" ||
+                    project.classList.contains(selected)
+                ) {
+
                     project.classList.remove("hide");
+
                 } else {
+
                     project.classList.add("hide");
+
                 }
 
             });
@@ -32,30 +41,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* ================= NAVBAR SCROLL ================= */
+    /* ==========================================
+       SCROLL REVEAL
+       ========================================== */
 
-    const navbar = document.querySelector(".navbar");
+    const revealItems = document.querySelectorAll(
+        ".section-heading, .project, .skill-row, .certificate, .about-grid, .intro-content"
+    );
 
-    window.addEventListener("scroll", () => {
-
-        if (window.scrollY > 30) {
-
-            navbar.style.background = "rgba(8,11,18,0.96)";
-
-        } else {
-
-            navbar.style.background = "rgba(8,11,18,0.88)";
-
-        }
-
+    revealItems.forEach(item => {
+        item.classList.add("reveal");
     });
 
-
-    /* ================= SCROLL REVEAL ================= */
-
-    const revealElements = document.querySelectorAll(
-        ".section-heading, .project-card, .skill-category, .cert-card, .stat-card, .about-highlight"
-    );
 
     const observer = new IntersectionObserver(
         entries => {
@@ -79,11 +76,57 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    revealElements.forEach(element => {
+    revealItems.forEach(item => {
+        observer.observe(item);
+    });
 
-        element.classList.add("reveal");
 
-        observer.observe(element);
+    /* ==========================================
+       NAVBAR SCROLL EFFECT
+       ========================================== */
+
+    const navbar = document.querySelector(".navbar");
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 40) {
+
+            navbar.style.background = "rgba(248,248,245,0.94)";
+            navbar.style.backdropFilter = "blur(12px)";
+
+        } else {
+
+            navbar.style.background = "transparent";
+            navbar.style.backdropFilter = "none";
+
+        }
+
+    });
+
+
+    /* ==========================================
+       SMOOTH NAVIGATION
+       ========================================== */
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+        link.addEventListener("click", event => {
+
+            const target = document.querySelector(
+                link.getAttribute("href")
+            );
+
+            if (target) {
+
+                event.preventDefault();
+
+                target.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }
+
+        });
 
     });
 
